@@ -41,6 +41,8 @@ var Engine = (function(global) {
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
 
+        // console.log(dt);
+
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
@@ -93,7 +95,7 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        player.update();
+        //player.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -134,11 +136,13 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
+                //console.log('before drawImage');
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
-
+        
         renderEntities();
+        
     }
 
     /* This function is called by the render function and is called on each game
@@ -153,7 +157,7 @@ var Engine = (function(global) {
             enemy.render();
         });
 
-        player.render();
+        //player.render();
     }
 
     /* This function does nothing but it could have been a good place to
