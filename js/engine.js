@@ -41,8 +41,6 @@ var Engine = (function(global) {
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
 
-        // console.log(dt);
-
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
@@ -95,16 +93,14 @@ var Engine = (function(global) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
-        //player.update();
+        player.update();
     }
 
     function checkCollisions() {
         allEnemies.forEach(function(enemy){
-            console.log(enemy.x);
-            console.log(player.x);
-
-            if (Math.abs(enemy.x - player.x) <=5 && Math.abs(enemy.y - player.y) <=5) {
-                player.update(200, 400);
+            if (Math.abs(enemy.x - player.x) <=50 && Math.abs(enemy.y - player.y) <=5) {
+                player.x = 200;
+                player.y = 400;
             }
         });
     }
@@ -169,6 +165,7 @@ var Engine = (function(global) {
         });
 
         player.render();
+        
     }
 
     /* This function does nothing but it could have been a good place to
@@ -176,7 +173,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-        // noop
+        
     }
 
     /* Go ahead and load all of the images we know we're going to need to

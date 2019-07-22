@@ -56,9 +56,13 @@ class Player {
         this.y = y;
     }
 
-    update(x, y) {
-        this.x = x;
-        this.y = y;
+    update() {
+        if (this.y === -25) {
+            var state = document.querySelector(".state");
+            state.textContent = "You Won!!!";
+            this.x = 200;
+            this.y = 400;
+        }
     }
 
     render() {
@@ -69,24 +73,24 @@ class Player {
         switch (key) {
             case 'left':
                 if (this.x >= 100) {
-                    this.update(this.x - 100, this.y);
+                    this.x = this.x - 100;
                 }
                 break;
             case 'up':
-                    if (this.y >= 60) {
-                        this.update(this.x, this.y - 85);
-                    }
-                    break;
+                if (this.y >= 60) {
+                    this.y = this.y - 85;
+                }
+                break;
             case 'right':
-                    if (this.x <= 300) {
-                        this.update(this.x + 100, this.y);
-                    }
-                    break;
+                if (this.x <= 300) {
+                    this.x = this.x + 100;
+                }
+                break;
             case 'down':
-                    if (this.y <= 315) {
-                        this.update(this.x, this.y + 85);
-                    }
-                    break;
+                if (this.y <= 315) {
+                    this.y = this.y + 85;
+                }
+                break;
         }
     }
 }
@@ -98,9 +102,9 @@ var allEnemies = [];
 var enemy1 = new Enemy(-100,60, 0.4);
 var enemy2 = new Enemy(-200,145, 0.6);
 var enemy3 = new Enemy(-300,228, 0.7);
-var enemy4 = new Enemy(-400,60, 0.4);
-var enemy5 = new Enemy(-500,145, 0.6);
-var enemy6 = new Enemy(-600,228, 0.7);
+var enemy4 = new Enemy(-400,60, 0.5);
+var enemy5 = new Enemy(-800,145, 2.3);
+var enemy6 = new Enemy(-600,228, 0.8);
 
 allEnemies.push(enemy1);
 allEnemies.push(enemy2);
