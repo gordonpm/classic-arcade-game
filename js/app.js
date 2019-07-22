@@ -48,7 +48,48 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
+class Player {
 
+    constructor(sprite, x , y) {
+        this.sprite = sprite;
+        this.x = x;
+        this.y = y;
+    }
+
+    update(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+
+    handleInput(key) {
+        switch (key) {
+            case 'left':
+                if (this.x >= 100) {
+                    this.update(this.x - 100, this.y);
+                }
+                break;
+            case 'up':
+                    if (this.y >= 60) {
+                        this.update(this.x, this.y - 85);
+                    }
+                    break;
+            case 'right':
+                    if (this.x <= 300) {
+                        this.update(this.x + 100, this.y);
+                    }
+                    break;
+            case 'down':
+                    if (this.y <= 315) {
+                        this.update(this.x, this.y + 85);
+                    }
+                    break;
+        }
+    }
+}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -57,10 +98,18 @@ var allEnemies = [];
 var enemy1 = new Enemy(-100,60, 0.4);
 var enemy2 = new Enemy(-200,145, 0.6);
 var enemy3 = new Enemy(-300,228, 0.7);
+var enemy4 = new Enemy(-400,60, 0.4);
+var enemy5 = new Enemy(-500,145, 0.6);
+var enemy6 = new Enemy(-600,228, 0.7);
+
 allEnemies.push(enemy1);
 allEnemies.push(enemy2);
 allEnemies.push(enemy3);
+allEnemies.push(enemy4);
+allEnemies.push(enemy5);
+allEnemies.push(enemy6);
 
+var player = new Player('images/char-boy.png', 200, 400);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -72,5 +121,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    //player.handleInput(allowedKeys[e.keyCode]);
+    player.handleInput(allowedKeys[e.keyCode]);
 });
