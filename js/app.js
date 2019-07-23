@@ -58,10 +58,10 @@ class Player {
 
     update() {
         if (this.y === -25) {
-            var state = document.querySelector(".state");
             state.textContent = "You Won!!!";
             this.x = 200;
             this.y = 400;
+            gameOver = true;
         }
     }
 
@@ -99,12 +99,14 @@ class Player {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
+var gameOver = false;
 var enemy1 = new Enemy(-100,60, 0.4);
 var enemy2 = new Enemy(-200,145, 0.6);
 var enemy3 = new Enemy(-300,228, 0.7);
 var enemy4 = new Enemy(-400,60, 0.5);
 var enemy5 = new Enemy(-800,145, 2.3);
 var enemy6 = new Enemy(-600,228, 0.8);
+var state = document.querySelector(".state");
 
 allEnemies.push(enemy1);
 allEnemies.push(enemy2);
@@ -124,6 +126,6 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
+    state.textContent = "";
     player.handleInput(allowedKeys[e.keyCode]);
 });
