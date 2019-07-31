@@ -1,5 +1,6 @@
 'use strict';
 
+// Super class which has the render method which is common to both Enemy and Player
 class GameObject {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);  
@@ -28,8 +29,11 @@ class Enemy extends GameObject {
         let locX = Math.floor(Math.random() * 5) + 1;
         this.x = this.x + dt*100*this.speed*locX;
     
+        // if enemy moves beyond the boundary, then reset to initial position
         if (this.x > 800) {
             this.x = -300;
+
+            // use random starting row for the enemy
             let locY = Math.floor(Math.random() * 3) + 1;
             switch (locY) {
                 case 1: 
@@ -81,6 +85,7 @@ class Player extends GameObject  {
                 }
                 break;
         }
+        // if player position is in top row then game is won
         if (this.y === -25) {
             state.textContent = "You Won!!!";
             this.x = 200;
