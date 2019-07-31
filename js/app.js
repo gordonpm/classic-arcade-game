@@ -1,72 +1,61 @@
+'use strict';
+
+class GameObject {
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);  
+    }
+}
+
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+class Enemy extends GameObject {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-    this.x = x;
-    this.y = y;
-    this.speed = speed;
-};
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
-
-    locX = Math.floor(Math.random() * 5) + 1;
-    this.x = this.x + dt*100*this.speed*locX;
-
-//    console.log(this.x);
-    if (this.x > 800) {
-        this.x = -300;
-        let locY = Math.floor(Math.random() * 3) + 1;
-        switch (locY) {
-            case 1: 
-                this.y = 60;
-                break;
-            case 2:
-                this.y = 145;
-                break;
-            default:
-                this.y = 228;    
-        }
-
+    constructor(x, y, speed) {
+        super();
+        this.sprite = 'images/enemy-bug.png';
+        this.x = x;
+        this.y = y;
+        this.speed = speed;
     }
-    //this.y = 200;
-};
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+    // Update the enemy's position, required method for game
+    // Parameter: dt, a time delta between ticks  
+    update(dt) {
+        let locX = Math.floor(Math.random() * 5) + 1;
+        this.x = this.x + dt*100*this.speed*locX;
+    
+        if (this.x > 800) {
+            this.x = -300;
+            let locY = Math.floor(Math.random() * 3) + 1;
+            switch (locY) {
+                case 1: 
+                    this.y = 60;
+                    break;
+                case 2:
+                    this.y = 145;
+                    break;
+                default:
+                    this.y = 228;    
+            }
+    
+        }
+    }
+}
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-class Player {
+class Player extends GameObject  {
 
     constructor(sprite, x , y) {
+        super();
         this.sprite = sprite;
         this.x = x;
         this.y = y;
-    }
-
-    update() {
-        if (this.y === -25) {
-            state.textContent = "You Won!!!";
-            this.x = 200;
-            this.y = 400;
-            gameOver = true;
-        }
-    }
-
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 
     handleInput(key) {
@@ -91,6 +80,12 @@ class Player {
                     this.y = this.y + 85;
                 }
                 break;
+        }
+        if (this.y === -25) {
+            state.textContent = "You Won!!!";
+            this.x = 200;
+            this.y = 400;
+            gameOver = true;
         }
     }
 }
