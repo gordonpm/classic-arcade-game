@@ -9,12 +9,7 @@ class GameObject {
 
 // Enemies our player must avoid
 class Enemy extends GameObject {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-
+    
     constructor(x, y, speed) {
         super();
         this.sprite = 'images/enemy-bug.png';
@@ -50,9 +45,7 @@ class Enemy extends GameObject {
     }
 }
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+// Player class 
 class Player extends GameObject  {
 
     constructor(sprite, x , y) {
