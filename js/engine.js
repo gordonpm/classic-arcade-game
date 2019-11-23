@@ -15,12 +15,12 @@
  * writing app.js a little simpler to work with.
  */
 
-var Engine = (function(global) {
+let Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
      * set the canvas element's height/width and add it to the DOM.
      */
-    var doc = global.document,
+    let doc = global.document,
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
@@ -98,7 +98,7 @@ var Engine = (function(global) {
 
     function checkCollisions() {
         allEnemies.forEach(function(enemy){
-            if (Math.abs(enemy.x - player.x) <=50 && Math.abs(enemy.y - player.y) <=5) {
+            if (Math.abs(enemy.x - player.x) <= 50 && Math.abs(enemy.y - player.y) <= 5) {
                 player.x = 200;
                 player.y = 400;
             }

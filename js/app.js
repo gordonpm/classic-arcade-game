@@ -22,7 +22,7 @@ class Enemy extends GameObject {
     // Parameter: dt, a time delta between ticks  
     update(dt) {
         let locX = Math.floor(Math.random() * 5) + 1;
-        this.x = this.x + dt*100*this.speed*locX;
+        this.x += dt * 100 * this.speed * locX;
     
         // if enemy moves beyond the boundary, then reset to initial position
         if (this.x > 800) {
@@ -59,22 +59,22 @@ class Player extends GameObject  {
         switch (key) {
             case 'left':
                 if (this.x >= 100) {
-                    this.x = this.x - 100;
+                    this.x -= 100;
                 }
                 break;
             case 'up':
                 if (this.y >= 60) {
-                    this.y = this.y - 85;
+                    this.y -= 85;
                 }
                 break;
             case 'right':
                 if (this.x <= 300) {
-                    this.x = this.x + 100;
+                    this.x += 100;
                 }
                 break;
             case 'down':
                 if (this.y <= 315) {
-                    this.y = this.y + 85;
+                    this.y += 85;
                 }
                 break;
         }
@@ -93,12 +93,12 @@ class Player extends GameObject  {
 // Place the player object in a variable called player
 var allEnemies = [];
 var gameOver = false;
-var enemy1 = new Enemy(-100,60, 0.4);
-var enemy2 = new Enemy(-200,145, 0.6);
-var enemy3 = new Enemy(-300,228, 0.7);
-var enemy4 = new Enemy(-400,60, 0.5);
-var enemy5 = new Enemy(-800,145, 2.3);
-var enemy6 = new Enemy(-600,228, 0.8);
+var enemy1 = new Enemy(-100, 60, 0.4);
+var enemy2 = new Enemy(-200, 145, 0.6);
+var enemy3 = new Enemy(-300, 228, 0.7);
+var enemy4 = new Enemy(-400, 60, 0.5);
+var enemy5 = new Enemy(-800, 145, 2.3);
+var enemy6 = new Enemy(-600, 228, 0.8);
 var state = document.querySelector(".state");
 
 allEnemies.push(enemy1);
