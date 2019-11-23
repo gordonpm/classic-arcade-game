@@ -65,7 +65,6 @@ var Engine = (function(global) {
      * game loop.
      */
     function init() {
-        reset();
         lastTime = Date.now();
         main();
     }
@@ -148,9 +147,7 @@ var Engine = (function(global) {
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
-        
         renderEntities();
-        
     }
 
     /* This function is called by the render function and is called on each game
@@ -166,14 +163,6 @@ var Engine = (function(global) {
         });
 
         player.render();
-        
-    }
-
-    /* This function does nothing but it could have been a good place to
-     * handle game reset states - maybe a new game menu or a game over screen
-     * those sorts of things. It's only called once by the init() method.
-     */
-    function reset() {
         
     }
 
