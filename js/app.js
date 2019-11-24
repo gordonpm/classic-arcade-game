@@ -83,7 +83,6 @@ class Player extends GameObject  {
             state.textContent = "You Won!!!";
             this.x = 200;
             this.y = 400;
-            gameOver = true;
         }
     }
 }
@@ -91,15 +90,15 @@ class Player extends GameObject  {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var allEnemies = [];
-var gameOver = false;
-var enemy1 = new Enemy(-100, 60, 0.4);
-var enemy2 = new Enemy(-200, 145, 0.6);
-var enemy3 = new Enemy(-300, 228, 0.7);
-var enemy4 = new Enemy(-400, 60, 0.5);
-var enemy5 = new Enemy(-800, 145, 2.3);
-var enemy6 = new Enemy(-600, 228, 0.8);
-var state = document.querySelector(".state");
+const allEnemies = [];
+const state = document.querySelector(".state");
+
+const enemy1 = new Enemy(-100, 60, 0.4);
+const enemy2 = new Enemy(-200, 145, 0.6);
+const enemy3 = new Enemy(-300, 228, 0.7);
+const enemy4 = new Enemy(-400, 60, 0.5);
+const enemy5 = new Enemy(-800, 145, 2.3);
+const enemy6 = new Enemy(-600, 228, 0.8);
 
 allEnemies.push(enemy1);
 allEnemies.push(enemy2);
@@ -108,12 +107,12 @@ allEnemies.push(enemy4);
 allEnemies.push(enemy5);
 allEnemies.push(enemy6);
 
-var player = new Player('images/char-boy.png', 200, 400);
+const player = new Player('images/char-boy.png', 200, 400);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
