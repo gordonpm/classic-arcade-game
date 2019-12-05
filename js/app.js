@@ -40,7 +40,6 @@ class Enemy extends GameObject {
                 default:
                     this.y = 228;    
             }
-    
         }
     }
 }
